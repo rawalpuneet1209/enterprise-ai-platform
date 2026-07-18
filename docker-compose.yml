@@ -1,0 +1,15 @@
+services:
+  ollama:
+    image: ollama/ollama:0.12.7
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+volumes:
+  ollama-data:
+

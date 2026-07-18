@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.7</version>
+    <relativePath/>
+  </parent>
+  <groupId>com.rawalpuneet.enterpriseai</groupId>
+  <artifactId>enterprise-ai-platform</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Enterprise AI Platform</name>
+  <description>Canonical Day 1-5 banking AI masterclass baseline</description>
+  <modules>
+    <module>domain</module>
+    <module>ai-platform</module>
+    <module>banking-ai-service</module>
+    <module>banking-mcp-server</module>
+  </modules>
+  <properties>
+    <java.version>25</java.version>
+    <maven.compiler.release>25</maven.compiler.release>
+  </properties>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.6.2</version>
+          <executions>
+            <execution>
+              <id>enforce-java</id>
+              <goals><goal>enforce</goal></goals>
+              <configuration><rules><requireJavaVersion><version>[25,26)</version></requireJavaVersion></rules></configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
