@@ -15,10 +15,13 @@
   <name>Enterprise AI Platform</name>
   <description>Canonical Day 1-5 banking AI masterclass baseline</description>
   <modules>
-    <module>domain</module>
-    <module>ai-platform</module>
-    <module>banking-ai-service</module>
-    <module>banking-mcp-server</module>
+    <module>platform-common</module>
+    <module>platform-domain</module>
+    <module>ai-platform-rag</module>
+    <module>ai-platform-agent</module>
+    <module>ai-platform-mcp</module>
+    <module>platform-api</module>
+    <module>integration-tests</module>
   </modules>
   <properties>
     <java.version>25</java.version>
@@ -49,4 +52,3 @@
     </plugins>
   </build>
 </project>
-

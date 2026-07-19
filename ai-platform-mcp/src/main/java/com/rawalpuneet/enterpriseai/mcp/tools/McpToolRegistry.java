@@ -1,0 +1,3 @@
+package com.rawalpuneet.enterpriseai.mcp.tools;
+import java.util.*; import java.util.function.Function; import java.util.stream.Collectors; import org.springframework.stereotype.Component;
+@Component public class McpToolRegistry { private final Map<String,McpTool> tools; public McpToolRegistry(List<McpTool> tools){this.tools=tools.stream().collect(Collectors.toUnmodifiableMap(McpTool::name,Function.identity()));} public Set<String> names(){return tools.keySet();} public String execute(String name,Map<String,String> arguments){var tool=tools.get(name);if(tool==null)throw new IllegalArgumentException("Unknown tool: "+name);return tool.execute(arguments);} }

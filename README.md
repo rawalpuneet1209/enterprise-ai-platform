@@ -6,10 +6,13 @@ Canonical cumulative code baseline for Days 1–5 of the Enterprise AI Architect
 
 | Module | Purpose |
 |---|---|
-| `domain` | Provider-neutral AI, RAG, agent, and banking contracts |
-| `ai-platform` | Section-aware chunking, hybrid retrieval, RAG orchestration, Ollama adapter |
-| `banking-ai-service` | Document/RAG APIs and a human-approved card replacement agent |
-| `banking-mcp-server` | JSON-RPC MCP server exposing governed tools, resources, and prompts |
+| `platform-common` | Shared execution context and cross-cutting primitives |
+| `platform-domain` | Provider-neutral AI, RAG, agent, and banking contracts |
+| `platform-api` | Document/RAG APIs and a human-approved card replacement agent |
+| `ai-platform-agent` | Planner, bounded-context workers, and orchestration |
+| `ai-platform-mcp` | JSON-RPC MCP server and governed banking tool registry |
+| `ai-platform-rag` | Chunking, embeddings, hybrid retrieval, reranking, prompts, and Ollama adapter |
+| `integration-tests` | Cross-module executable workflow tests |
 
 ## Requirements
 
@@ -28,13 +31,13 @@ mvn clean verify
 ```bash
 docker compose up -d
 docker compose exec ollama ollama pull llama3.2:3b
-mvn -pl banking-ai-service -am spring-boot:run
+mvn -pl platform-api -am spring-boot:run
 ```
 
 In another terminal:
 
 ```bash
-mvn -pl banking-mcp-server -am spring-boot:run
+mvn -pl ai-platform-mcp -am spring-boot:run
 ```
 
 The banking API listens on `8080`; MCP listens on `8081/mcp`.
